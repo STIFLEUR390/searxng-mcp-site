@@ -80,6 +80,12 @@ kbd {
 
 /* ---------- header ---------- */
 
+.section[id],
+.section-head[id] {
+  /* Keep a section title clear of the sticky header when a nav link lands on it. */
+  scroll-margin-top: 74px;
+}
+
 .site-head {
   position: sticky;
   top: 0;
