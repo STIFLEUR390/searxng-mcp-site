@@ -4,7 +4,10 @@ import "../globals.css";
 import { getMessages } from "@/lib/i18n";
 import { isLocale, locales, type Locale } from "@/lib/locales";
 
-const SITE = "https://searxng-mcp.vercel.app";
+/** Vercel exposes the production host at build time; the literal keeps local builds honest. */
+const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "https://searxng-mcp-site.vercel.app";
 
 export const viewport: Viewport = {
   themeColor: "#0b0a08",
