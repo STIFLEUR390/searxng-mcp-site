@@ -4,13 +4,13 @@ import { defaultLocale, isLocale } from "@/lib/locales";
 const LOCALE_COOKIE = "locale";
 
 /**
- * Every page lives under a locale segment. A request without one is redirected
- * to the visitor's Accept-Language match, falling back to the last choice they
- * made in the switcher.
+ * Every page lives under a locale segment. The site has one page, so only `/` is
+ * redirected: any other path is a 404 wherever it lands, and prefixing it with a
+ * locale would turn `/typo` into `/fr/typo`.
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  if (isLocale(pathname.split("/")[1] ?? "")) return NextResponse.next();
+  if (isLocale(pathname.split("/")[1] ?? "") || pathname !== "/") return NextResponse.next();
 
   const chosen = request.cookies.get(LOCALE_COOKIE)?.value;
   const languages = (request.headers.get("accept-language") ?? "")
