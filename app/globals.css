@@ -996,11 +996,17 @@ h3 {
   color: var(--ink);
 }
 
+.tool > * {
+  /* Long tool arguments (`include_header/footer/navigation/…`) must break, not widen the page. */
+  min-width: 0;
+}
+
 .tool p {
   margin: 0;
   color: var(--muted);
   font-size: 13.5px;
   max-width: 66ch;
+  overflow-wrap: anywhere;
 }
 
 .tool p + p {
