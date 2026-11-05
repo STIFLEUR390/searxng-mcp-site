@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "title": "Búsqueda privada para tu agente",
+    "description": "Un servidor MCP que da a tu agente toda la web mediante SearXNG: metabúsqueda, noticias, imágenes, vídeos, autocompletado y extracción limpia de páginas. MIT, sin claves de API, autoalojable."
+  },
+  "nav": {
+    "demo": "demo en vivo",
+    "tools": "herramientas",
+    "instances": "instancias",
+    "install": "instalar",
+    "npm": "npm ↗",
+    "skill": "skill"
+  },
+  "hero": {
+    "eyebrow": "servidor model context protocol",
+    "title1": "Búsqueda privada,",
+    "title2": "conectada a",
+    "title3": "tu",
+    "accent": "agente",
+    "lead": "Una sola conexión MCP da a un agente metabúsqueda, noticias, imágenes, vídeos, autocompletado y extracción limpia de páginas — a través de una instancia SearXNG que tú ejecutas. Sin claves de API de búsqueda, sin factura por consulta, sin un proveedor leyendo el registro de consultas.",
+    "ctaDemo": "Probar en vivo",
+    "ctaNpm": "npm install ↗",
+    "ctaGithub": "GitHub ↗"
+  },
+  "terminal": {
+    "label": "claude · searxng",
+    "user": "¿cuáles son las mejores instancias de searxng?",
+    "copy": "copiar"
+  },
+  "stats": {
+    "tools": "herramientas",
+    "keys": "claves de api",
+    "tests": "pruebas",
+    "license": "autoalojado"
+  },
+  "demo": {
+    "eyebrow": "zona de pruebas en vivo",
+    "title": "Pregunta a la instancia que alimenta al agente.",
+    "lead": "Este cuadro lanza la misma petición que el servidor —",
+    "leadAfter": "contra la instancia configurada para este despliegue — y muestra la respuesta con el formateador del propio MCP, copiado tal cual. Cambia a",
+    "leadAgent": "lo que ve el agente",
+    "leadTail": "para ver el texto exacto que recibe el modelo.",
+    "note": "La instancia se configura en el servidor y nunca sale de él: ninguna dirección llega al bundle del navegador, a la página ni a un mensaje de error. Las instancias públicas limitan la API JSON, así que un",
+    "noteAfter": "aquí significa que la instancia respondió, no que la demo esté rota."
+  },
+  "playground": {
+    "live": "en vivo",
+    "api": "api json de searxng",
+    "routeNote": "un route handler · sin claves",
+    "placeholder": "Pregunta como lo haría tu agente…",
+    "queryLabel": "Consulta",
+    "limit": "límite",
+    "range": "periodo",
+    "ranges": {
+      "any": "cualquier fecha",
+      "day": "24 h",
+      "week": "7 días",
+      "month": "30 días",
+      "year": "12 meses"
+    },
+    "categories": {
+      "general": "web",
+      "news": "noticias",
+      "images": "imágenes",
+      "videos": "vídeos"
+    },
+    "search": "Buscar",
+    "searching": "buscando…",
+    "resultsTab": "resultados",
+    "agentTab": "lo que ve el agente",
+    "resultsWord": "resultados",
+    "skipped": "motor(es) omitido(s)",
+    "running": "en curso…",
+    "noRun": "sin consultas",
+    "via": "vía",
+    "instance": "instancia",
+    "copy": "copiar",
+    "copyOutput": "copiar salida",
+    "copied": "copiado",
+    "empty": "Sin resultados para esta consulta en esta instancia. Prueba una más amplia.",
+    "querying": "Consultando la instancia…",
+    "idle": "Aún nada. Lanza una búsqueda para ver la salida de la herramienta.",
+    "networkError": "La API de la demo no respondió. Revisa tu conexión y reinténtalo.",
+    "tool": "herramienta",
+    "suggestions": [
+      "instancia searxng",
+      "runtime async rust",
+      "servidor mcp",
+      "alternativas europeas"
+    ]
+  },
+  "output": {
+    "eyebrow": "el contrato de salida",
+    "title": "Texto, no JSON. Dimensionado para una ventana de contexto.",
+    "lead": "El resultado de una herramienta es un bloque Markdown compacto: posición, título, URL, un fragmento de 300 caracteres y luego la procedencia. Los motores que fallan se nombran en vez de descartarse en silencio, para que el modelo sepa qué no ha visto.",
+    "kept": "conservado",
+    "dropped": "descartado",
+    "snippet": "fragmento",
+    "snippetChars": "300 caracteres",
+    "answer": "respuestas",
+    "infoboxes": "infocuadros",
+    "related": "búsquedas relacionadas",
+    "unresponsive": "motores mudos",
+    "lead2": "Cada campo de arriba pasa por",
+    "lead2After": ", una función pura con sus propias pruebas — el mismo código que ejecuta esta página. Nada lo resume un LLM a la salida: una cita que recibes sigue siendo una cita.",
+    "toolResult": "resultado de herramienta · searxng_search",
+    "copy": "copiar"
+  },
+  "tools": {
+    "eyebrow": "superficie",
+    "title": "Siete herramientas. Una conexión.",
+    "lead": "Cada herramienta valida sus argumentos con zod antes de que una petición salga del proceso, y responde según el contrato anterior. Los filtros de dominio se aplican localmente, tras la respuesta de la instancia:",
+    "leadMid": "y",
+    "leadTail": "nunca te ocultan el resto de la página.",
+    "args": "argumentos",
+    "items": {
+      "search": "Metabúsqueda en los motores activos de tu instancia, ordenada y sin duplicados.",
+      "news": "El mismo contrato acotado a noticias, con fechas de publicación cuando el motor las ofrece.",
+      "images": "Resultados de imágenes con la URL a tamaño completo y una miniatura que el agente puede valorar.",
+      "videos": "Resultados de vídeo con miniaturas y la página de origen.",
+      "autocomplete": "El autocompletado de la instancia, para ampliar una consulta que los motores respondieron poco.",
+      "config": "La instancia misma: URL, idioma, categorías y cada motor activo agrupado por categoría. Úsala cuando se rechace un nombre de motor.",
+      "extract": "Descarga una página y devuelve texto legible — Readability y Turndown, sin el chrome del sitio antes de llegar al modelo."
+    }
+  },
+  "install": {
+    "eyebrow": "instalación",
+    "title": "Añádelo en una línea.",
+    "lead": "Node 18 o superior. Apunta",
+    "leadMid": "a una instancia cuyo",
+    "leadMid2": "incluya",
+    "leadTail": "; la demo de arriba habla con la instancia fijada en el servidor para este despliegue, así que su URL nunca aparece en la página.",
+    "envHeader": "variable",
+    "envWhat": "qué cambia",
+    "env": {
+      "url": "URL base de tu instancia. Por defecto sondea instancias sanas de searx.space; debe servir /search con format=json activado.",
+      "timeout": "Plazo por petición. 20000 por defecto — súbelo en una instancia lenta o autoalojada.",
+      "browser": "Punto de conexión CDP opcional (Chrome u Obscura) para extraer páginas que necesitan JavaScript. También se lee como SEARXNG_OBSCURA_URL."
+    }
+  },
+  "skill": {
+    "eyebrow": "skill complementario",
+    "title": "Enséñale la superficie al agente.",
+    "lead": "El MCP aporta siete herramientas; el skill dice cuál usar, en qué orden y qué significa una",
+    "leadMid": "en la salida. Un comando lo instala para Claude Code, Codex, OpenCode, Cursor y omp — sin clonar ni editar configuración.",
+    "agents": "claude code · codex · opencode · cursor · omp",
+    "note": "Lee el repositorio directamente: instala solo este skill y deja los otros veinte.",
+    "repo": "ver el skill ↗"
+  },
+  "instances": {
+    "eyebrow": "instancias",
+    "title": "Ejecuta una, o toma una prestada.",
+    "lead": "Una instancia de SearXNG es un contenedor y un archivo de configuración. La lista de abajo viene de",
+    "leadAfter": ", que clasifica las instancias públicas cada hora — útil para probar la búsqueda HTML antes de desplegar la tuya. Las públicas suelen rechazar la API JSON que necesita este servidor: activa",
+    "leadTail": "en una instancia que controles.",
+    "all": "todas las instancias ↗",
+    "ranking": "searx.space · clasificación en vivo"
+  },
+  "cta": {
+    "title": "Apúntalo a tu propia instancia.",
+    "body": "SearXNG es un contenedor y un archivo de configuración. Una vez",
+    "bodyMid": "está activo, solo queda configurar la URL de este servidor.",
+    "primary": "@aplix39/searxng-mcp ↗",
+    "secondary": "código fuente ↗"
+  },
+  "footer": {
+    "note": "MIT. Construido sobre SearXNG. La demo reenvía consultas en vivo a una instancia del servidor",
+    "noteAfter": "y no guarda nada.",
+    "npm": "npm",
+    "github": "github",
+    "searxng": "searxng",
+    "top": "arriba",
+    "language": "idioma"
+  }
+}

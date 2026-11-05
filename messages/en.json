@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "title": "Private search for your agent",
+    "description": "An MCP server that gives your agent the whole web through SearXNG: metasearch, news, images, videos, autocomplete and clean page extraction. MIT, no API keys, self-hostable."
+  },
+  "nav": {
+    "demo": "live demo",
+    "tools": "tools",
+    "instances": "instances",
+    "install": "install",
+    "npm": "npm ↗",
+    "skill": "skill"
+  },
+  "hero": {
+    "eyebrow": "model context protocol server",
+    "title1": "Private search,",
+    "title2": "wired into",
+    "title3": "your",
+    "accent": "agent",
+    "lead": "One MCP connection gives an agent metasearch, news, images, videos, autocomplete and clean page extraction — through a SearXNG instance you run. No search API keys, no per-query invoice, no vendor reading the query log.",
+    "ctaDemo": "Try it live",
+    "ctaNpm": "npm install ↗",
+    "ctaGithub": "GitHub ↗"
+  },
+  "terminal": {
+    "label": "claude · searxng",
+    "user": "what are the best searxng instances?",
+    "copy": "copy"
+  },
+  "stats": {
+    "tools": "tools",
+    "keys": "api keys",
+    "tests": "tests",
+    "license": "self-hosted"
+  },
+  "demo": {
+    "eyebrow": "live playground",
+    "title": "Ask the instance that powers the agent.",
+    "lead": "This box issues the same request the server issues —",
+    "leadAfter": "against the instance this deployment is configured with — then renders the answer with the MCP's own formatter, vendored verbatim. Switch to",
+    "leadAgent": "what the agent sees",
+    "leadTail": "for the exact text the model receives.",
+    "note": "The instance is configured on the server and never leaves it: no address reaches the browser bundle, the page, or an error message. Public instances throttle the JSON API, so a",
+    "noteAfter": "here means the instance answered — not that the demo broke."
+  },
+  "playground": {
+    "live": "live",
+    "api": "searxng json api",
+    "routeNote": "one route handler · no keys",
+    "placeholder": "Ask the way your agent would…",
+    "queryLabel": "Search query",
+    "limit": "limit",
+    "range": "range",
+    "ranges": {
+      "any": "any time",
+      "day": "past day",
+      "week": "past week",
+      "month": "past month",
+      "year": "past year"
+    },
+    "categories": {
+      "general": "web",
+      "news": "news",
+      "images": "images",
+      "videos": "videos"
+    },
+    "search": "Search",
+    "searching": "searching…",
+    "resultsTab": "results",
+    "agentTab": "what the agent sees",
+    "resultsWord": "results",
+    "skipped": "engine(s) skipped",
+    "running": "running…",
+    "noRun": "no run yet",
+    "via": "via",
+    "instance": "instance",
+    "copy": "copy",
+    "copyOutput": "copy output",
+    "copied": "copied",
+    "empty": "No results for this query on this instance. Try a broader one.",
+    "querying": "Querying the instance…",
+    "idle": "Nothing yet. Run a search to see the tool output.",
+    "networkError": "The demo API did not answer. Check your connection and retry.",
+    "tool": "tool",
+    "suggestions": [
+      "searxng instance",
+      "rust async runtime",
+      "mcp server",
+      "european alternatives"
+    ]
+  },
+  "output": {
+    "eyebrow": "the output contract",
+    "title": "Text, not JSON. Sized for a context window.",
+    "lead": "A tool result is a compact Markdown block: rank, title, URL, a 300-character snippet, then provenance. Engines that failed are named rather than silently dropped, so the model knows what it did not see.",
+    "kept": "kept",
+    "dropped": "dropped",
+    "snippet": "snippet",
+    "snippetChars": "300 chars",
+    "answer": "answers",
+    "infoboxes": "infoboxes",
+    "related": "related searches",
+    "unresponsive": "unresponsive engines",
+    "lead2": "Every field above survives the trip through",
+    "lead2After": ", a pure function with its own tests — the same code this page runs. Nothing is summarised by an LLM on the way out, so a quote you get back is a quote.",
+    "toolResult": "tool result · searxng_search",
+    "copy": "copy"
+  },
+  "tools": {
+    "eyebrow": "surface",
+    "title": "Seven tools. One connection.",
+    "lead": "Each tool validates its arguments with zod before a request leaves the process, and answers with the contract above. Domain filters run locally, after the instance answers, so",
+    "leadMid": "and",
+    "leadTail": "never hide the rest of the page from you.",
+    "args": "args",
+    "items": {
+      "search": "Metasearch across the engines your instance has enabled, ranked and deduplicated.",
+      "news": "The same contract scoped to news, adding publication dates when the engine reports them.",
+      "images": "Image results with both the full-size URL and a thumbnail the agent can weigh.",
+      "videos": "Video results with thumbnails and the page the video came from.",
+      "autocomplete": "Instance autocomplete, for widening a query the engines answered thinly.",
+      "config": "The instance itself: URL, locale, categories and every enabled engine grouped by category. Call it when an engine name is rejected.",
+      "extract": "Fetches a page and returns readable article text — Readability plus Turndown, site chrome stripped before it reaches the model."
+    }
+  },
+  "install": {
+    "eyebrow": "install",
+    "title": "Add it in one line.",
+    "lead": "Node 18 or newer. Point",
+    "leadMid": "at an instance whose",
+    "leadMid2": "includes",
+    "leadTail": "; the demo above talks to whichever instance this deployment set on the server, so its URL never appears in the page.",
+    "envHeader": "env",
+    "envWhat": "what it changes",
+    "env": {
+      "url": "Base URL of your instance. Defaults to probing healthy instances from searx.space; must serve /search with format=json enabled.",
+      "timeout": "Per-request deadline. Defaults to 20000 — raise it on a slow or self-hosted instance.",
+      "browser": "Optional CDP endpoint (Chrome or Obscura) for extraction on pages that need JavaScript. Also read as SEARXNG_OBSCURA_URL."
+    }
+  },
+  "skill": {
+    "eyebrow": "companion skill",
+    "title": "Teach the agent the surface.",
+    "lead": "The MCP gives an agent seven tools; the skill tells it which one to reach for, in what order, and what a",
+    "leadMid": "note in the output means. One command installs it for Claude Code, Codex, OpenCode, Cursor and omp — no clone, no config file.",
+    "agents": "claude code · codex · opencode · cursor · omp",
+    "note": "Reads the repository directly: install the skill alone and skip the other twenty.",
+    "repo": "browse the skill ↗"
+  },
+  "instances": {
+    "eyebrow": "instances",
+    "title": "Run one, or borrow one.",
+    "lead": "A SearXNG instance is a container and a settings file. The list below comes from",
+    "leadAfter": ", which ranks public instances hourly — handy for trying the HTML search before you deploy your own. Public instances usually refuse the JSON API this server needs: enable",
+    "leadTail": "on an instance you control.",
+    "all": "all instances ↗",
+    "ranking": "searx.space · live ranking"
+  },
+  "cta": {
+    "title": "Point it at your own instance.",
+    "body": "SearXNG is a container and a settings file. Once",
+    "bodyMid": "is enabled, the only thing left to configure is this server's URL.",
+    "primary": "@aplix39/searxng-mcp ↗",
+    "secondary": "source ↗"
+  },
+  "footer": {
+    "note": "MIT. Built on SearXNG. The demo proxies live queries to a server-side instance",
+    "noteAfter": "and stores nothing.",
+    "npm": "npm",
+    "github": "github",
+    "searxng": "searxng",
+    "top": "top",
+    "language": "language"
+  }
+}

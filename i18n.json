@@ -1,0 +1,19 @@
+{
+  "$schema": "https://lingo.dev/schema/i18n.json",
+  "version": "1.10",
+  "locale": {
+    "source": "en",
+    "targets": ["fr", "de", "es"]
+  },
+  "buckets": {
+    "json": {
+      "include": ["messages/[locale].json"]
+    }
+  },
+  "provider": {
+    "id": "openai",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "baseUrl": "http://localhost:10100/v1",
+    "prompt": "Translate the marketing copy of searxng-mcp, an open-source MCP server that gives AI agents private web search. Keep command names, environment variables, file names and code identifiers exactly as written. Keep the voice terse and technical: no marketing superlatives, no exclamation marks. French, German and Spanish must use their own punctuation conventions (French uses non-breaking spaces before ? ! : ;)."
+  }
+}
