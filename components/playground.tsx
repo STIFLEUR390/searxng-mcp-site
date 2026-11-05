@@ -305,9 +305,14 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
                       {result.url.replace(/^https?:\/\/[^/]+/, "")}
                     </span>
                     {result.content ? <p className="r-snip">{result.content}</p> : null}
-                    {result.thumbnail && result.image && result.image !== result.thumbnail ? (
+                    {result.thumbnail ?? result.image ? (
                       <div className="thumbs">
-                        <img src={result.thumbnail} alt="" loading="lazy" />
+                        <img
+                          src={(result.thumbnail ?? result.image) as string}
+                          alt=""
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                        />
                       </div>
                     ) : null}
                     <div className="r-meta">

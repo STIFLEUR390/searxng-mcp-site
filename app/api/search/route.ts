@@ -98,8 +98,8 @@ function toCard(result: SearXNGResult): ResultCard {
     engines: result.engines?.length ? result.engines : result.engine ? [result.engine] : [],
     category: result.category ?? "",
     published: result.publishedDate ?? result.metadata ?? null,
-    thumbnail: result.thumbnail ?? null,
-    image: result.img_src ?? null,
+    thumbnail: result.thumbnail?.trim() || null,
+    image: result.img_src?.trim() || null,
   };
 }
 
