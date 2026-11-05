@@ -88,6 +88,8 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
       try {
         const response = await fetch(`/api/search?${params}`, { signal: controller.signal });
         const body = (await response.json()) as SearchPayload | SearchError;
+        // A newer run owns the panel: drop whatever this one settled with.
+        if (controller !== pending.current) return;
         if (response.ok) {
           setPayload(body as SearchPayload);
         } else {
@@ -95,12 +97,13 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
           setError(body as SearchError);
         }
       } catch (cause) {
+        if (controller !== pending.current) return;
         if ((cause as Error).name !== "AbortError") {
           setPayload(null);
           setError({ error: strings.networkError });
         }
       } finally {
-        if (!controller.signal.aborted) setLoading(false);
+        if (controller === pending.current) setLoading(false);
       }
     },
     [category, limit, query, strings.networkError, time],
