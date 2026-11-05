@@ -11,6 +11,11 @@
     "npm": "npm ↗",
     "skill": "skill"
   },
+  "theme": {
+    "label": "Design",
+    "toLight": "Zum hellen Design wechseln",
+    "toDark": "Zum dunklen Design wechseln"
+  },
   "hero": {
     "eyebrow": "model context protocol server",
     "title1": "Private Suche,",

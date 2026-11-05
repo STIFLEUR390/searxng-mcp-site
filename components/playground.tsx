@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CopyButton } from "@/components/copy-button";
 import type { SearchError, SearchPayload } from "@/lib/payload";
@@ -289,7 +291,11 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
           payload.results.length > 0 ? (
             <ul className="results">
               {payload.results.map((result, index) => (
-                <li className="result" key={`${result.url}-${index}`}>
+                <li
+                  className="result"
+                  key={`${result.url}-${index}`}
+                  style={{ "--i": index } as CSSProperties}
+                >
                   <span className="r-idx">{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <a

@@ -1,5 +1,7 @@
 import { CopyButton } from "@/components/copy-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { Motion } from "@/components/motion";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Playground } from "@/components/playground";
 import type { Messages } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
@@ -98,6 +100,7 @@ export function Landing({
 
   return (
     <>
+      <Motion />
       <header className="site-head">
         <div className="wrap">
           <a className="wordmark" href="#top">
@@ -112,6 +115,7 @@ export function Landing({
             <a className="nav-cta" href={NPM_URL} target="_blank" rel="noreferrer noopener">
               {t.nav.npm}
             </a>
+            <ThemeToggle {...t.theme} />
             <LanguageSwitcher locale={locale} label={t.footer.language} />
           </nav>
         </div>
@@ -155,7 +159,7 @@ export function Landing({
               </div>
             </div>
 
-            <div className="terminal rise rise-2">
+            <div className="terminal rise rise-2" data-tilt>
               <div className="terminal-bar">
                 <i />
                 <i />
@@ -217,7 +221,7 @@ export function Landing({
           </div>
         </div>
 
-        <section className="section" id="demo">
+        <section className="section" id="demo" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -239,7 +243,7 @@ export function Landing({
           </div>
         </section>
 
-        <section className="section" id="output">
+        <section className="section" id="output" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -350,7 +354,7 @@ export function Landing({
           </div>
         </section>
 
-        <section className="section" id="tools">
+        <section className="section" id="tools" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -381,7 +385,7 @@ export function Landing({
           </div>
         </section>
 
-        <section className="section" id="install">
+        <section className="section" id="install" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -440,7 +444,7 @@ export function Landing({
           </div>
         </section>
 
-        <section className="section" id="skill">
+        <section className="section" id="skill" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -474,7 +478,7 @@ export function Landing({
           </div>
         </section>
 
-        <section className="section" id="instances">
+        <section className="section" id="instances" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">
@@ -530,7 +534,7 @@ export function Landing({
         </section>
 
         <div className="wrap">
-          <div className="cta">
+          <div className="cta" data-reveal>
             <div>
               <h2>{t.cta.title}</h2>
               <p>
@@ -570,6 +574,7 @@ export function Landing({
               {t.footer.searxng}
             </a>
             <a href="#top">{t.footer.top}</a>
+            <ThemeToggle {...t.theme} />
             <LanguageSwitcher locale={locale} label={t.footer.language} />
           </div>
         </div>

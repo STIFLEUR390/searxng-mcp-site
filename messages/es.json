@@ -11,6 +11,11 @@
     "npm": "npm ↗",
     "skill": "skill"
   },
+  "theme": {
+    "label": "Tema",
+    "toLight": "Cambiar al tema claro",
+    "toDark": "Cambiar al tema oscuro"
+  },
   "hero": {
     "eyebrow": "servidor model context protocol",
     "title1": "Búsqueda privada,",

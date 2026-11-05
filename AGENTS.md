@@ -21,6 +21,8 @@ npm run build
 - `SEARXNG_URL` is read only by `lib/instance.ts`, which starts with `import "server-only"`. Never pass it to a component prop, a client component, an error message or metadata — the point of the site is that the instance stays private.
 - Every user string comes from `messages/<locale>.json`. Add a key to `en.json` first, then the three other files; `npx lingo.dev@latest run` fills them from `i18n.json`.
 - Both route handlers call `rateLimit()` and sanitise input with `cleanQuery()` before touching upstream.
+- The theme is a `theme` cookie read by `THEME_SCRIPT` in `lib/theme.ts` before first paint; never read it on the server (that would make every page dynamic) and never animate a theme change outside `components/theme-toggle.tsx`.
+- All motion lives in `components/motion.tsx` + the `/* ---------- motion ---------- */` block of `app/globals.css`, and every animation must stay inside `prefers-reduced-motion: no-preference`.
 - `lib/format.ts` is vendored verbatim from the MCP package: keep it byte-identical to `src/format.ts` upstream, or the demo stops showing what an agent actually receives.
 
 ## Copy

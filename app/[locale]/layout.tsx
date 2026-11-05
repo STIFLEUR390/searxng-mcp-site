@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import { getMessages } from "@/lib/i18n";
 import { isLocale, locales, type Locale } from "@/lib/locales";
+import { THEME_SCRIPT } from "@/lib/theme";
 
 /** Vercel exposes the production host at build time; the literal keeps local builds honest. */
 const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -10,8 +11,11 @@ const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
   : "https://searxng-mcp-site.vercel.app";
 
 export const viewport: Viewport = {
-  themeColor: "#0b0a08",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0b0a08" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f3ea" },
+  ],
+  colorScheme: "dark light",
 };
 
 export function generateStaticParams() {
@@ -71,8 +75,12 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale satisfies Locale}>
-      <body>{children}</body>
+    <html lang={locale satisfies Locale} data-theme="dark" suppressHydrationWarning>
+      <body>
+        {/* Sets data-theme from the cookie before the body paints: no flash of the wrong palette. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {children}
+      </body>
     </html>
   );
 }
