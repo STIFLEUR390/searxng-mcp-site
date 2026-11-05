@@ -158,9 +158,16 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
             void run();
           }}
         >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-            <path d="m16.5 16.5 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          {/* Dark Reader rewrites the paint attributes of these nodes, which React cannot patch up. */}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden suppressHydrationWarning>
+            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" suppressHydrationWarning />
+            <path
+              d="m16.5 16.5 4 4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              suppressHydrationWarning
+            />
           </svg>
           <input
             ref={input}
