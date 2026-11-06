@@ -5,11 +5,14 @@
   },
   "nav": {
     "demo": "live-demo",
+    "output": "ausgabe",
     "tools": "werkzeuge",
     "instances": "instanzen",
     "install": "installieren",
     "npm": "npm ↗",
-    "skill": "skill"
+    "menu": "Menü",
+    "close": "Schließen",
+    "skip": "Zum Inhalt springen"
   },
   "theme": {
     "label": "Design",
@@ -24,8 +27,7 @@
     "accent": "Agenten",
     "lead": "Eine MCP-Verbindung gibt einem Agenten Metasuche, Nachrichten, Bilder, Videos, Autovervollständigung und saubere Seitenextraktion — über eine SearXNG-Instanz, die du selbst betreibst. Keine Such-API-Schlüssel, keine Rechnung pro Abfrage, kein Anbieter, der das Abfrageprotokoll liest.",
     "ctaDemo": "Live ausprobieren",
-    "ctaNpm": "npm install ↗",
-    "ctaGithub": "GitHub ↗"
+    "ctaInstall": "In einer Zeile installieren"
   },
   "terminal": {
     "label": "claude · searxng",
@@ -92,11 +94,13 @@
       "rust async runtime",
       "mcp server",
       "europäische alternativen"
-    ]
+    ],
+    "categoryLabel": "Kategorie",
+    "viewLabel": "Ansicht"
   },
   "output": {
     "eyebrow": "der ausgabe-vertrag",
-    "title": "Text, kein JSON. Zugeschnitten auf ein Kontextfenster.",
+    "title": "Text, kein JSON.",
     "lead": "Ein Werkzeugergebnis ist ein kompakter Markdown-Block: Rang, Titel, URL, ein 300-Zeichen-Auszug, dann die Herkunft. Ausgefallene Engines werden benannt statt still verworfen, damit das Modell weiß, was es nicht gesehen hat.",
     "kept": "behalten",
     "dropped": "verworfen",
@@ -109,7 +113,8 @@
     "lead2": "Jedes Feld oben geht durch",
     "lead2After": "— eine reine Funktion mit eigenen Tests, derselbe Code, den diese Seite ausführt. Unterwegs fasst kein LLM zusammen: ein zurückgegebenes Zitat bleibt ein Zitat.",
     "toolResult": "werkzeugergebnis · searxng_search",
-    "copy": "kopieren"
+    "copy": "kopieren",
+    "subtitle": "Für ein Kontextfenster bemessen."
   },
   "tools": {
     "eyebrow": "oberfläche",
@@ -159,7 +164,11 @@
     "leadAfter": ", das öffentliche Instanzen stündlich bewertet — praktisch, um die HTML-Suche auszuprobieren, bevor du selbst deployst. Öffentliche Instanzen verweigern meist die JSON-API, die dieser Server braucht: aktiviere",
     "leadTail": "auf einer Instanz, die du kontrollierst.",
     "all": "alle instanzen ↗",
-    "ranking": "searx.space · live-ranking"
+    "ranking": "searx.space · live-ranking",
+    "host": "host",
+    "version": "version",
+    "uptime": "verfügbarkeit",
+    "tls": "TLS"
   },
   "cta": {
     "title": "Richte es auf deine eigene Instanz.",

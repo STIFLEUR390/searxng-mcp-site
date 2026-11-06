@@ -5,11 +5,14 @@
   },
   "nav": {
     "demo": "live demo",
+    "output": "output",
     "tools": "tools",
     "instances": "instances",
     "install": "install",
     "npm": "npm ↗",
-    "skill": "skill"
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content"
   },
   "theme": {
     "label": "Theme",
@@ -24,8 +27,7 @@
     "accent": "agent",
     "lead": "One MCP connection gives an agent metasearch, news, images, videos, autocomplete and clean page extraction — through a SearXNG instance you run. No search API keys, no per-query invoice, no vendor reading the query log.",
     "ctaDemo": "Try it live",
-    "ctaNpm": "npm install ↗",
-    "ctaGithub": "GitHub ↗"
+    "ctaInstall": "Install in one line"
   },
   "terminal": {
     "label": "claude · searxng",
@@ -92,11 +94,13 @@
       "rust async runtime",
       "mcp server",
       "european alternatives"
-    ]
+    ],
+    "categoryLabel": "Category",
+    "viewLabel": "View"
   },
   "output": {
     "eyebrow": "the output contract",
-    "title": "Text, not JSON. Sized for a context window.",
+    "title": "Text, not JSON.",
     "lead": "A tool result is a compact Markdown block: rank, title, URL, a 300-character snippet, then provenance. Engines that failed are named rather than silently dropped, so the model knows what it did not see.",
     "kept": "kept",
     "dropped": "dropped",
@@ -109,7 +113,8 @@
     "lead2": "Every field above survives the trip through",
     "lead2After": ", a pure function with its own tests — the same code this page runs. Nothing is summarised by an LLM on the way out, so a quote you get back is a quote.",
     "toolResult": "tool result · searxng_search",
-    "copy": "copy"
+    "copy": "copy",
+    "subtitle": "Sized for a context window."
   },
   "tools": {
     "eyebrow": "surface",
@@ -159,7 +164,11 @@
     "leadAfter": ", which ranks public instances hourly — handy for trying the HTML search before you deploy your own. Public instances usually refuse the JSON API this server needs: enable",
     "leadTail": "on an instance you control.",
     "all": "all instances ↗",
-    "ranking": "searx.space · live ranking"
+    "ranking": "searx.space · live ranking",
+    "host": "host",
+    "version": "version",
+    "uptime": "uptime",
+    "tls": "TLS"
   },
   "cta": {
     "title": "Point it at your own instance.",

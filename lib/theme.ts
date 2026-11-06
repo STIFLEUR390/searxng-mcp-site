@@ -13,4 +13,4 @@ export function isTheme(value: string | undefined): value is Theme {
 }
 
 /** Runs before any markup paints, so there is no flash of the wrong palette. */
-export const THEME_SCRIPT = `(function(){try{var m=document.cookie.match(/(?:^|; )${THEME_COOKIE}=(dark|light)/);var t=m&&m[1];if(!t){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t;document.documentElement.classList.add("js")}catch(e){document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")}})()`;
+export const THEME_SCRIPT = `(function(){try{var m=document.cookie.match(/(?:^|; )${THEME_COOKIE}=(dark|light)/);var t=m&&m[1];if(!t){t="light"}document.documentElement.dataset.theme=t;document.documentElement.classList.add("js")}catch(e){document.documentElement.dataset.theme="light";document.documentElement.classList.add("js")}})()`;

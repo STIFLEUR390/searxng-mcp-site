@@ -1,7 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
-
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CopyButton } from "@/components/copy-button";
 import type { SearchError, SearchPayload } from "@/lib/payload";
@@ -33,6 +31,8 @@ export type PlaygroundStrings = {
   categories: Record<CategoryId, string>;
   search: string;
   searching: string;
+  categoryLabel: string;
+  viewLabel: string;
   resultsTab: string;
   agentTab: string;
   resultsWord: string;
@@ -141,7 +141,7 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
   const meta = payload?.meta;
 
   return (
-    <div className="demo">
+    <div className="demo" data-ui>
       <div className="demo-head">
         <span className="dot" aria-hidden />
         <b>{strings.live}</b>
@@ -184,7 +184,7 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
         </form>
 
         <div className="controls-row">
-          <div className="seg" role="group" aria-label={strings.categories.general}>
+          <div className="seg" role="group" aria-label={strings.categoryLabel}>
             {CATEGORIES.map((entry) => (
               <button
                 key={entry}
@@ -244,13 +244,27 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
         ) : null}
       </div>
 
-      <div className="demo-body">
+      <div className="demo-body" aria-busy={loading}>
         <div className="demo-toolbar">
-          <div className="tabs" role="tablist" aria-label="View">
+          <div
+            className="tabs"
+            role="tablist"
+            aria-label={strings.viewLabel}
+            onKeyDown={(event) => {
+              if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+              event.preventDefault();
+              const next = tab === "results" ? "agent" : "results";
+              setTab(next);
+              document.getElementById(`demo-tab-${next}`)?.focus();
+            }}
+          >
             <button
               type="button"
               role="tab"
+              id="demo-tab-results"
+              aria-controls="demo-panel"
               aria-selected={tab === "results"}
+              tabIndex={tab === "results" ? 0 : -1}
               onClick={() => setTab("results")}
             >
               {strings.resultsTab}
@@ -258,7 +272,10 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
             <button
               type="button"
               role="tab"
+              id="demo-tab-agent"
+              aria-controls="demo-panel"
               aria-selected={tab === "agent"}
+              tabIndex={tab === "agent" ? 0 : -1}
               onClick={() => setTab("agent")}
             >
               {strings.agentTab}
@@ -283,104 +300,126 @@ export function Playground({ strings }: { strings: PlaygroundStrings }) {
           </div>
 
           <div className="toolbar-end">
-            {payload ? <CopyButton value={payload.text} label={strings.copyOutput} copiedLabel={strings.copied} /> : null}
+            {payload ? (
+              <CopyButton value={payload.text} label={strings.copyOutput} copiedLabel={strings.copied} />
+            ) : null}
           </div>
         </div>
 
-        {error ? (
-          <div className="error" role="alert">
-            <b>{error.error}</b>
-            {error.hint ? <span>{error.hint}</span> : null}
-          </div>
-        ) : null}
+        <div
+          className="demo-panel"
+          id="demo-panel"
+          role="tabpanel"
+          aria-labelledby={tab === "results" ? "demo-tab-results" : "demo-tab-agent"}
+        >
+          {error ? (
+            <div className="error" role="alert">
+              <b>{error.error}</b>
+              {error.hint ? <span>{error.hint}</span> : null}
+            </div>
+          ) : null}
 
-        {!error && payload && tab === "results" ? (
-          payload.results.length > 0 ? (
-            <ul className="results">
-              {payload.results.map((result, index) => (
-                <li
-                  className="result"
-                  key={`${result.url}-${index}`}
-                  style={{ "--i": index } as CSSProperties}
-                >
-                  <span className="r-idx">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <a
-                      className="r-title"
-                      href={result.url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      {result.title}
-                    </a>
-                    <span className="r-url">
-                      <b>{result.domain}</b>
-                      {result.url.replace(/^https?:\/\/[^/]+/, "")}
-                    </span>
-                    {result.content ? <p className="r-snip">{result.content}</p> : null}
-                    {result.thumbnail ?? result.image ? (
-                      <div className="thumbs">
-                        <img
-                          src={(result.thumbnail ?? result.image) as string}
-                          alt=""
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                    ) : null}
-                    <div className="r-meta">
-                      {result.engines.map((engine) => (
-                        <span className="badge" key={engine}>
-                          {engine}
-                        </span>
-                      ))}
-                      {result.category ? <span className="badge">{result.category}</span> : null}
-                      {result.published ? (
-                        <span className="badge hot">{result.published.slice(0, 10)}</span>
+          {!error && payload && tab === "results" ? (
+            payload.results.length > 0 ? (
+              <ul className="results">
+                {payload.results.map((result, index) => (
+                  <li className="result" key={`${result.url}-${index}`}>
+                    <span className="r-idx">{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <a
+                        className="r-title"
+                        href={result.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        {result.title}
+                      </a>
+                      <span className="r-url">
+                        <b>{result.domain}</b>
+                        {result.url.replace(/^https?:\/\/[^/]+/, "")}
+                      </span>
+                      {result.content ? <p className="r-snip">{result.content}</p> : null}
+                      {result.thumbnail ?? result.image ? (
+                        <div className="thumbs">
+                          <img
+                            src={(result.thumbnail ?? result.image) as string}
+                            alt={result.title}
+                            loading="eager"
+                            referrerPolicy="no-referrer"
+                            onError={(event) => {
+                              event.currentTarget.style.display = "none";
+                            }}
+                          />
+                        </div>
                       ) : null}
+                      <div className="r-meta">
+                        {result.engines.map((engine) => (
+                          <span className="badge" key={engine}>
+                            {engine}
+                          </span>
+                        ))}
+                        {result.category ? <span className="badge">{result.category}</span> : null}
+                        {result.published ? (
+                          <span className="badge hot">{result.published.slice(0, 10)}</span>
+                        ) : null}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="empty">
+                <p>{strings.empty}</p>
+                <div className="suggestions">
+                  {strings.suggestions.map((value) => (
+                    <button key={value} type="button" onClick={() => pickSuggestion(value)}>
+                      {value}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )
+          ) : null}
+
+          {!error && payload && tab === "agent" ? (
+            <>
+              <pre className="agent">{payload.text}</pre>
+              <div className="mcp-call">
+                <code>
+                  {strings.tool} <em>searxng_search</em> · q=&quot;{meta?.query}&quot; · limit={limit}
+                  {time ? ` · time_range=${time}` : ""}
+                </code>
+                <CopyButton value={payload.text} label={strings.copy} copiedLabel={strings.copied} />
+              </div>
+            </>
+          ) : null}
+
+          {!error && !payload && loading ? (
+            <>
+              <div className="skeleton" aria-hidden>
+                {[0, 1, 2].map((row) => (
+                  <div className="sk-row" key={row}>
+                    <span className="sk-idx" />
+                    <div>
+                      <span className="sk-title" />
+                      <span className="sk-line" />
+                      <span className="sk-line short" />
                     </div>
                   </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className="empty">
-              <p>{strings.empty}</p>
-              <div className="suggestions">
-                {strings.suggestions.map((value) => (
-                  <button key={value} type="button" onClick={() => pickSuggestion(value)}>
-                    {value}
-                  </button>
                 ))}
               </div>
+              <p className="sr-only" role="status">
+                {strings.querying}
+              </p>
+            </>
+          ) : null}
+
+          {!error && !payload && !loading ? (
+            <div className="empty">
+              <p>{strings.idle}</p>
             </div>
-          )
-        ) : null}
-
-        {!error && payload && tab === "agent" ? (
-          <>
-            <pre className="agent">{payload.text}</pre>
-            <div className="mcp-call">
-              <code>
-                {strings.tool} <em>searxng_search</em> · q=&quot;{meta?.query}&quot; · limit={limit}
-                {time ? ` · time_range=${time}` : ""}
-              </code>
-              <CopyButton value={payload.text} label={strings.copy} copiedLabel={strings.copied} />
-            </div>
-          </>
-        ) : null}
-
-        {!error && !payload && loading ? (
-          <div className="empty">
-            <p>{strings.querying}</p>
-          </div>
-        ) : null}
-
-        {!error && !payload && !loading ? (
-          <div className="empty">
-            <p>{strings.idle}</p>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
     </div>
   );

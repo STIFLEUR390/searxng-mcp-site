@@ -5,11 +5,14 @@
   },
   "nav": {
     "demo": "demo en vivo",
+    "output": "salida",
     "tools": "herramientas",
     "instances": "instancias",
     "install": "instalar",
     "npm": "npm ↗",
-    "skill": "skill"
+    "menu": "Menú",
+    "close": "Cerrar",
+    "skip": "Ir al contenido"
   },
   "theme": {
     "label": "Tema",
@@ -24,8 +27,7 @@
     "accent": "agente",
     "lead": "Una sola conexión MCP da a un agente metabúsqueda, noticias, imágenes, vídeos, autocompletado y extracción limpia de páginas — a través de una instancia SearXNG que tú ejecutas. Sin claves de API de búsqueda, sin factura por consulta, sin un proveedor leyendo el registro de consultas.",
     "ctaDemo": "Probar en vivo",
-    "ctaNpm": "npm install ↗",
-    "ctaGithub": "GitHub ↗"
+    "ctaInstall": "Instalar en una línea"
   },
   "terminal": {
     "label": "claude · searxng",
@@ -92,11 +94,13 @@
       "runtime async rust",
       "servidor mcp",
       "alternativas europeas"
-    ]
+    ],
+    "categoryLabel": "Categoría",
+    "viewLabel": "Vista"
   },
   "output": {
     "eyebrow": "el contrato de salida",
-    "title": "Texto, no JSON. Dimensionado para una ventana de contexto.",
+    "title": "Texto, no JSON.",
     "lead": "El resultado de una herramienta es un bloque Markdown compacto: posición, título, URL, un fragmento de 300 caracteres y luego la procedencia. Los motores que fallan se nombran en vez de descartarse en silencio, para que el modelo sepa qué no ha visto.",
     "kept": "conservado",
     "dropped": "descartado",
@@ -109,7 +113,8 @@
     "lead2": "Cada campo de arriba pasa por",
     "lead2After": ", una función pura con sus propias pruebas — el mismo código que ejecuta esta página. Nada lo resume un LLM a la salida: una cita que recibes sigue siendo una cita.",
     "toolResult": "resultado de herramienta · searxng_search",
-    "copy": "copiar"
+    "copy": "copiar",
+    "subtitle": "Dimensionado para una ventana de contexto."
   },
   "tools": {
     "eyebrow": "superficie",
@@ -159,7 +164,11 @@
     "leadAfter": ", que clasifica las instancias públicas cada hora — útil para probar la búsqueda HTML antes de desplegar la tuya. Las públicas suelen rechazar la API JSON que necesita este servidor: activa",
     "leadTail": "en una instancia que controles.",
     "all": "todas las instancias ↗",
-    "ranking": "searx.space · clasificación en vivo"
+    "ranking": "searx.space · clasificación en vivo",
+    "host": "host",
+    "version": "versión",
+    "uptime": "disponibilidad",
+    "tls": "TLS"
   },
   "cta": {
     "title": "Apúntalo a tu propia instancia.",

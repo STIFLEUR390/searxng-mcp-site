@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
+import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { getMessages } from "@/lib/i18n";
 import { isLocale, locales, type Locale } from "@/lib/locales";
 import { THEME_SCRIPT } from "@/lib/theme";
+
+const sans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 /** Vercel exposes the production host at build time; the literal keeps local builds honest. */
 const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -12,10 +16,10 @@ const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0a08" },
-    { media: "(prefers-color-scheme: light)", color: "#f7f3ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1114" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f9fa" },
   ],
-  colorScheme: "dark light",
+  colorScheme: "light dark",
 };
 
 export function generateStaticParams() {
@@ -38,6 +42,7 @@ export async function generateMetadata({
     title: { default: title, template: "%s · searxng-mcp" },
     description: t.meta.description,
     applicationName: "searxng-mcp",
+    other: { "page-type": "software", "site-kind": "software" },
     keywords: [
       "mcp",
       "model context protocol",
@@ -75,7 +80,16 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale satisfies Locale} data-theme="dark" suppressHydrationWarning>
+    <html
+      lang={locale satisfies Locale}
+      className={`${sans.variable} ${mono.variable}`}
+      data-theme="light"
+      data-type="software"
+      data-site-kind="software"
+      data-radius="soft"
+      data-buttons="step"
+      suppressHydrationWarning
+    >
       <body>
         {/* Sets data-theme from the cookie before the body paints: no flash of the wrong palette. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />

@@ -1,0 +1,168 @@
+{
+ "url": "http://localhost:3003/fr",
+ "views": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "navH": 59,
+   "scrollHeight": 6089,
+   "screens": 6.77,
+   "sections": [
+    {
+     "n": 1,
+     "tag": "div",
+     "id": "",
+     "cls": "wrap",
+     "top": 59,
+     "h": 804,
+     "hScreens": 0.89,
+     "offGrid": 804,
+     "tiles": [
+      {
+       "file": "desktop-sec-01-a.jpg",
+       "scrollY": 59
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tag": "section",
+     "id": "demo",
+     "cls": "section is-in",
+     "top": 871,
+     "h": 764,
+     "hScreens": 0.85,
+     "offGrid": 764,
+     "tiles": [
+      {
+       "file": "desktop-sec-02-a.jpg",
+       "scrollY": 871
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tag": "section",
+     "id": "output",
+     "cls": "section is-in",
+     "top": 1634,
+     "h": 829,
+     "hScreens": 0.92,
+     "offGrid": 829,
+     "tiles": [
+      {
+       "file": "desktop-sec-03-a.jpg",
+       "scrollY": 1634
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tag": "section",
+     "id": "tools",
+     "cls": "section is-in",
+     "top": 2463,
+     "h": 1100,
+     "hScreens": 1.22,
+     "offGrid": 200,
+     "tiles": [
+      {
+       "file": "desktop-sec-04-a.jpg",
+       "scrollY": 2463
+      },
+      {
+       "file": "desktop-sec-04-b.jpg",
+       "scrollY": 2663
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tag": "section",
+     "id": "install",
+     "cls": "section is-in",
+     "top": 3562,
+     "h": 779,
+     "hScreens": 0.87,
+     "offGrid": 779,
+     "tiles": [
+      {
+       "file": "desktop-sec-05-a.jpg",
+       "scrollY": 3562
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tag": "section",
+     "id": "skill",
+     "cls": "section is-in",
+     "top": 4342,
+     "h": 454,
+     "hScreens": 0.5,
+     "offGrid": 454,
+     "tiles": [
+      {
+       "file": "desktop-sec-06-a.jpg",
+       "scrollY": 4342
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "section",
+     "id": "instances",
+     "cls": "section is-in",
+     "top": 4795,
+     "h": 827,
+     "hScreens": 0.92,
+     "offGrid": 827,
+     "tiles": [
+      {
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 4795
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "tag": "div",
+     "id": "",
+     "cls": "wrap",
+     "top": 5623,
+     "h": 234,
+     "hScreens": 0.26,
+     "offGrid": 234,
+     "tiles": [
+      {
+       "file": "desktop-sec-08-a.jpg",
+       "scrollY": 5189,
+       "cutTop": 434,
+       "height": 234
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "tag": "footer",
+     "id": "",
+     "cls": "site-foot",
+     "top": 5912,
+     "h": 177,
+     "hScreens": 0.2,
+     "offGrid": 177,
+     "tiles": [
+      {
+       "file": "desktop-sec-09-a.jpg",
+       "scrollY": 5189,
+       "cutTop": 723,
+       "height": 177
+      }
+     ]
+    }
+   ],
+   "consoleErrors": []
+  }
+ },
+ "at": "2026-11-05T16:39:12.848Z"
+}

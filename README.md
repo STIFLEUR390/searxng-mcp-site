@@ -37,20 +37,19 @@ The command lives in `SKILL_CMD` (`components/landing.tsx`) and in each dictiona
 
 ## Themes and motion
 
-Dark is the design's own palette; the light palette is a warm paper that keeps every
-hairline and gradient readable. The choice lives in a `theme` cookie so the server
-never needs to know it: `lib/theme.ts` exports a tiny inline script that sets
-`data-theme` on `<html>` before the body paints, which is why there is no flash.
+Light is the default palette — a cool slate with one teal accent — and dark is its
+counterpart, with every hairline and surface still readable. The choice lives in a
+`theme` cookie so the server never needs to know it: `lib/theme.ts` exports a tiny
+inline script that sets `data-theme` on `<html>` before the body paints, which is
+why there is no flash.
 
 The toggle animates the swap with the View Transitions API — the new palette grows
 out of the button (`::view-transition-new(root)` + `clip-path: circle()`), falling
 back to an instant change when the API or motion is unavailable.
 
-`components/motion.tsx` is the only motion controller: it fades sections in with an
-`IntersectionObserver` and tilts the hero terminal towards the pointer on fine
-pointers. Both are skipped under `prefers-reduced-motion: reduce`, and the reveal
-styles only apply once the inline script has added `js` to `<html>`, so a visitor
-without JavaScript still sees the whole page.
+Motion is CSS-only: a one-shot signal across the hero grid and a slow pulse in the
+tools topology. Both switch off under `prefers-reduced-motion: reduce`; there is no
+scroll reveal, parallax or pointer tilt.
 
 ## Translations
 

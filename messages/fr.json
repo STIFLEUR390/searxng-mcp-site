@@ -5,11 +5,14 @@
   },
   "nav": {
     "demo": "démo live",
+    "output": "sortie",
     "tools": "outils",
     "instances": "instances",
     "install": "installer",
     "npm": "npm ↗",
-    "skill": "skill"
+    "menu": "Menu",
+    "close": "Fermer",
+    "skip": "Aller au contenu"
   },
   "theme": {
     "label": "Thème",
@@ -24,8 +27,7 @@
     "accent": "agent",
     "lead": "Une seule connexion MCP donne à un agent la métarecherche, les actualités, les images, les vidéos, l'autocomplétion et l'extraction de pages — via une instance SearXNG que vous hébergez. Aucune clé d'API de recherche, aucune facture à la requête, aucun fournisseur qui lit le journal des requêtes.",
     "ctaDemo": "Essayer en direct",
-    "ctaNpm": "npm install ↗",
-    "ctaGithub": "GitHub ↗"
+    "ctaInstall": "Installer en une ligne"
   },
   "terminal": {
     "label": "claude · searxng",
@@ -92,11 +94,13 @@
       "runtime async rust",
       "serveur mcp",
       "alternatives européennes"
-    ]
+    ],
+    "categoryLabel": "Catégorie",
+    "viewLabel": "Vue"
   },
   "output": {
     "eyebrow": "le contrat de sortie",
-    "title": "Du texte, pas du JSON. Dimensionné pour une fenêtre de contexte.",
+    "title": "Du texte, pas du JSON.",
     "lead": "Un résultat d'outil est un bloc Markdown compact : rang, titre, URL, un extrait de 300 caractères, puis la provenance. Les moteurs en échec sont nommés au lieu d'être supprimés en silence, pour que le modèle sache ce qu'il n'a pas vu.",
     "kept": "conservé",
     "dropped": "retiré",
@@ -109,7 +113,8 @@
     "lead2": "Chaque champ ci-dessus traverse",
     "lead2After": ", une fonction pure avec ses propres tests — le même code que cette page exécute. Rien n'est résumé par un LLM en sortie : une citation récupérée reste une citation.",
     "toolResult": "résultat d'outil · searxng_search",
-    "copy": "copier"
+    "copy": "copier",
+    "subtitle": "Dimensionné pour une fenêtre de contexte."
   },
   "tools": {
     "eyebrow": "surface",
@@ -159,7 +164,11 @@
     "leadAfter": ", qui classe les instances publiques chaque heure — pratique pour essayer la recherche HTML avant de déployer la vôtre. Les instances publiques refusent en général l'API JSON dont ce serveur a besoin : activez",
     "leadTail": "sur une instance que vous contrôlez.",
     "all": "toutes les instances ↗",
-    "ranking": "searx.space · classement live"
+    "ranking": "searx.space · classement live",
+    "host": "hôte",
+    "version": "version",
+    "uptime": "disponibilité",
+    "tls": "TLS"
   },
   "cta": {
     "title": "Pointez-le vers votre propre instance.",
