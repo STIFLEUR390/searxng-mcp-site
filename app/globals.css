@@ -1597,7 +1597,7 @@ footer.closing {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--gutter);
-  align-items: start;
+  align-items: stretch;
   flex: 1;
   min-height: 0;
 }
@@ -1707,12 +1707,12 @@ footer.closing {
   white-space: pre-wrap;
 }
 
-.install-side {
-  display: flex;
+.env-panel {
   grid-column: 7 / -1;
-  flex-direction: column;
-  gap: 24px;
-  min-height: 0;
+}
+
+.skill-panel {
+  grid-column: 1 / -1;
 }
 
 .env-panel,
@@ -1778,6 +1778,7 @@ footer.closing {
 }
 
 .skill-lead {
+  max-width: 92ch;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
@@ -1913,6 +1914,7 @@ footer.closing {
 /* ---------- footer / close ---------- */
 
 footer.closing {
+  height: auto;
   background: var(--inv-bg);
   color: var(--inv-ink);
 }
@@ -1944,7 +1946,7 @@ footer.closing {
 }
 
 .close .lead code {
-  background: rgb(255 255 255 / 0.08);
+  background: color-mix(in srgb, currentColor 12%, transparent);
   color: var(--inv-ink);
 }
 
@@ -2012,7 +2014,7 @@ footer.closing {
 }
 
 .legal code {
-  background: rgb(255 255 255 / 0.08);
+  background: color-mix(in srgb, currentColor 12%, transparent);
   color: var(--inv-ink);
   font-size: 13px;
 }
@@ -2174,7 +2176,8 @@ footer.closing {
   }
 
   .installer,
-  .install-side {
+  .env-panel,
+  .skill-panel {
     grid-column: 1 / -1;
   }
 
@@ -2182,8 +2185,33 @@ footer.closing {
     min-height: 340px;
   }
 
-  .install-side {
-    gap: 16px;
+  .env thead {
+    display: none;
+  }
+
+  .env tr {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .env tr:last-child {
+    border-bottom: 0;
+  }
+
+  .env td {
+    display: block;
+    padding: 2px 14px;
+    border: 0;
+  }
+
+  .env td:first-child {
+    padding-top: 8px;
+  }
+
+  .env td code {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -2194,10 +2222,13 @@ footer.closing {
   }
 
   .installer,
-  .install-side {
+  .env-panel {
     grid-column: auto;
   }
 
+  .skill-panel {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1100px) {
@@ -2250,8 +2281,7 @@ footer.closing {
     --gutter: 12px;
   }
 
-  main > section:not(.hero),
-  footer.closing {
+  main > section:not(.hero) {
     height: calc(var(--hm, var(--h, 1)) * 100lvh);
     padding-bottom: calc(var(--padb) + var(--bar));
   }
@@ -2433,35 +2463,6 @@ footer.closing {
 
   .skill-panel {
     padding: 14px;
-  }
-
-  .env thead {
-    display: none;
-  }
-
-  .env tr {
-    display: block;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .env tr:last-child {
-    border-bottom: 0;
-  }
-
-  .env td {
-    display: block;
-    padding: 2px 14px;
-    border: 0;
-  }
-
-  .env td:first-child {
-    padding-top: 8px;
-  }
-
-  .env td code {
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
 
   .instances-table,

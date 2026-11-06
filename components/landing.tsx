@@ -524,8 +524,7 @@ export function Landing({
                 </fieldset>
               </div>
 
-              <div className="install-side">
-                <div className="env-panel" data-ui>
+              <div className="env-panel" data-ui>
                   <table className="env">
                     <thead>
                       <tr>
@@ -565,7 +564,6 @@ export function Landing({
                     {t.skill.repo}
                   </a>
                 </div>
-              </div>
             </div>
           </div>
         </section>
@@ -632,7 +630,7 @@ export function Landing({
         </section>
       </main>
 
-      <footer className="closing site-foot" style={size(1)}>
+      <footer className="closing site-foot">
         <div className="wrap">
           <div className="close">
             <h2>{t.cta.title}</h2>
